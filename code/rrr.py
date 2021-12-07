@@ -63,6 +63,7 @@ class RRR(robot_arm.Robot_arm):
         T23[3, :] = np.array([0, 0, 0, 1])
         
         return T01, T12, T23
+    
     def mgd_func(self, q):
         """Calcule la Matrice T03(q) du MGD
         ENTREE : q vecteur de taille 3
@@ -84,17 +85,17 @@ class RRR(robot_arm.Robot_arm):
         T03[0, 0] = c1*c2*c3 - c1*s2*s3
         T03[0, 1] = -c1*c2*s3 - c1*s2*c3
         T03[0, 2] = s1
-        T03[0, 3] = c1*c2 *(c3* self.n + self.m)  -c1 *s2*s3* self.n + c1*self.k
+        T03[0, 3] = c1*c2*self.m  + c1*self.k
         T03[1, 0] = s1*c2*c3 -s1*c2*s3
         T03[1, 1] = -s1*c2*s3 -s1*s2*c3
         T03[1, 2] = -c1
-        T03[1, 3] = s1*c2*(c3*self.n +self.m) - s1*s2*s3*self.n +s1* self.k
+        T03[1, 3] = s1*c2*self.m + s1* self.k
         T03[2, 0] = c3*s2 +c2*s3
         T03[2, 1] = -s2*s3 +c2*c3
         T03[2, 2] = 0
-        T03[2, 3] = s2*(c3*self.n+self.m)+c2*s3*self.n + self.l
+        T03[2, 3] = s2*self.m+ self.l
         T03[3, 0] = 0
-        T03[3, 1] = 0
+        T03[3, 1] = 0 
         T03[3, 2] = 0
         T03[3, 3] = 1
 

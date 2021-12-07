@@ -52,11 +52,11 @@ class GraphWidget(QtWidgets.QWidget):
         self.axes.cla()  # Clear the canvas.
         self.axes.plot3D(   [0, X1[0], X2[0], X3[0], X4[0]], 
                             [0, X1[1], X2[1], X3[1], X4[1]], 
-                            [0, X1[2], X2[2], X3[2], X4[2]] , 'red', linewidth=10)
+                            [0, X1[2], X2[2], X3[2], X4[2]] , 'red', linewidth=8)
         self.axes.set_xlabel('X')
         self.axes.set_xlim(-2.0, 2.0)
         self.axes.set_ylabel('Y')
-        self.axes.set_ylim(-2.0, 2.0)
+        self.axes.set_ylim(-2.0, 3.0)
         self.axes.set_zlabel('Z')
         self.axes.set_zlim(0.0, 2.0)
 
