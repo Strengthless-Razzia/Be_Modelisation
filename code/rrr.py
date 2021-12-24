@@ -125,13 +125,13 @@ class RRR(robot_arm.Robot_arm):
         # Les équations sont résolues avec un + ou moins c3 donc on rajoute un eps à -1 ou 1 (il y aura donc 2 solutions maximum)
         Epsilonesin = [1, -1]
 
-        c3 = ((dist(x,y) - k) **2(z - l)**2 - m**2 - n**2)/(2*m*n)
+      #  c3 = ((dist(x,y) - k) **2(z - l)**2 - m**2 - n**2)/(2*m*n)
         # On parcours toutes les possiblités pour les deux épsilones
-        for epssin in Epsilonesin:
-            q3 = np.arctan2(epssin * np.sqrt(1 - c3 **2), c3)
-            c2 = z - 
+       # for epssin in Epsilonesin:
+          #  q3 = np.arctan2(epssin * np.sqrt(1 - c3 **2), c3)
+            #c2 = z - 
             # On ajoute le q à la liste des solutions
-            list_sol.append(np.array([q1, q2, q3]))
+           # list_sol.append(np.array([q1, q2, q3]))
 
         return list_sol
 
