@@ -110,34 +110,28 @@ class RRR(robot_arm.Robot_arm):
         # Variables pour alléger le code
         n = self.n
         m = self.m
+        k = self.k
+        l = self.l
         x = X[0]
         y = X[1]
         z = X[2]
 
-        # c3 se trouve directement
-        c3 = (m - z) / n
-
-        # Les équations sont résolues avec 2 épsilons qui sont égales à -1 ou 1 (il y aura donc 4 solutions maximum)
-        Epsilonesin = [1, -1]
-        Epsilone1 = [1, -1]
-
+        # q1 se trouve directement
+        q1 = np.arctan2(y,x)
+        
         # Initialisation de la liste des solutions
         list_sol = []
 
+        # Les équations sont résolues avec un + ou moins c3 donc on rajoute un eps à -1 ou 1 (il y aura donc 2 solutions maximum)
+        Epsilonesin = [1, -1]
+
+        c3 = ((dist(x,y) - k) **2(z - l)**2 - m**2 - n**2)/(2*m*n)
         # On parcours toutes les possiblités pour les deux épsilones
         for epssin in Epsilonesin:
-            s3 = epssin * np.sqrt(1 - c3 ** 2)
-            q3 = np.arctan2(s3, c3)
-            for eps1 in Epsilone1:
-                # Si x et y sont égaux à 0 on voit bien qu'il n'y aura pas de solution
-                if x != 0 or y != 0:
-                    s1 = (-s3 * y * n + eps1 * x * np.sqrt(x ** 2 + y ** 2 - (s3 * n) ** 2)) / (x ** 2 + y ** 2)
-                    c1 = (-s3 * x * n - eps1 * y * np.sqrt(x ** 2 + y ** 2 - (s3 * n) ** 2)) / (x ** 2 + y ** 2)
-                    q1 = np.arctan2(s1, c1)
-                    q2 = c1 * y - s1 * x
-
-                    # On ajoute le q à la liste des solutions
-                    list_sol.append(np.array([q1, q2, q3]))
+            q3 = np.arctan2(epssin * np.sqrt(1 - c3 **2), c3)
+            c2 = z - 
+            # On ajoute le q à la liste des solutions
+            list_sol.append(np.array([q1, q2, q3]))
 
         return list_sol
 
